@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <title>Register | Calls Logger</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--  SweetAlert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" id="theme-styles">
 </head>
 <body>
     <div class="container">
@@ -16,7 +22,7 @@
         <hr/>
 
         <div>
-            <form class="form">
+            <form class="form" id="signupForm" onsubmit="submitForm()" method="post" th:action="@{/signup}">
                 <div class="form-group">
                     <label for="firstName"><strong>First Name</strong></label>
                     <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
@@ -29,12 +35,12 @@
 
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input type="text" id="email" name="email" placeholder="example@domail.com" required>
+                    <input type="email" id="email" name="email" placeholder="example@domail.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phoneNumber"><strong>Phone Number</strong></label>
-                    <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
                 </div>
 
                 <div class="form-group">
@@ -48,8 +54,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="showPassword"><strong>Show Password</strong></label>
-                    <input type="checkbox" id="showPassword">
+                    <label for="checkbox"><strong>Show Password</strong></label>
+                    <input type="checkbox" id="checkbox" onclick="showPassword()">
                 </div>
 
                 <div class="form-group">
@@ -58,5 +64,30 @@
             </form>
         </div>
     </div>
+
+    <script type="application/javascript">
+        // let checkPox = document.getElementById("showPassword");
+        // if (checkPox.checked()) showPassword();
+        let password = document.getElementById("password");
+        let confirmPassword = document.getElementById("confirmPassword");
+
+        function submitForm(event){
+            event.preventDefault();
+
+            if (password !== confirmPassword){
+                swal("Your passwords do not match!");
+                return false;
+            }
+        }
+
+        function showPassword(){
+
+            if (password.type === "password") password.type = "text";
+            else password.type = "password";
+
+            if (confirmPassword.type === "password") confirmPassword.type = "text";
+            else confirmPassword.type = "password";
+        }
+    </script>
 </body>
 </html>
