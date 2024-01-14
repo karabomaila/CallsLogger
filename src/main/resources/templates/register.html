@@ -22,30 +22,32 @@
         <hr/>
 
         <div>
-            <form class="form" id="signupForm" onsubmit="submitForm()" method="post" th:action="@{/signup}">
+            <form class="form" id="signupForm" onsubmit="submitForm()" method="post" th:object="${signup}" th:action="@{/signup}">
+<!--                <input type="text" id="id" th:field="*{id}" hidden="hidden">-->
+
                 <div class="form-group">
                     <label for="firstName"><strong>First Name</strong></label>
-                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                    <input type="text" id="firstName" th:field="*{firstName}" placeholder="First Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName"><strong>Last Name</strong></label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                    <input type="text" id="lastName" th:field="*{lastName}" placeholder="Last Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input type="email" id="email" name="email" placeholder="example@domail.com" required>
+                    <input type="email" id="email" th:field="*{email}" placeholder="example@domail.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phoneNumber"><strong>Phone Number</strong></label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                    <input type="tel" maxlength="10" minlength="10" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password"><strong>Password</strong></label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
                 </div>
 
                 <div class="form-group">
@@ -66,7 +68,6 @@
     </div>
 
     <script type="application/javascript">
-        // let checkPox = document.getElementById("showPassword");
         // if (checkPox.checked()) showPassword();
         let password = document.getElementById("password");
         let confirmPassword = document.getElementById("confirmPassword");
@@ -74,7 +75,9 @@
         function submitForm(event){
             event.preventDefault();
 
-            if (password !== confirmPassword){
+            if (password === confirmPassword){
+                return true;
+            }else{
                 swal("Your passwords do not match!");
                 return false;
             }

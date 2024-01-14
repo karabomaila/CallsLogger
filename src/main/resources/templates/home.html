@@ -11,6 +11,13 @@
     <div class="container py-5">
       <h1>Welcome to the Calls Logger where you can submit service requests</h1>
         <div class="card-body">
+
+            <div class="alert alert-danger alert-dismissible fade show m-4" th:if="${!#strings.isEmpty(error) }" th:text="${error}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
             <form class="form" method="POST">
                 <div class="form-group">
                     <label for="username"><strong>Username</strong></label>

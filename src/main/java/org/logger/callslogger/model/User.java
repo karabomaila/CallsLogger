@@ -14,17 +14,18 @@ public class User {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "fistName")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
 
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Column(name = "password")
+    @Column(name = "password", unique = true)
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
-
-
 }

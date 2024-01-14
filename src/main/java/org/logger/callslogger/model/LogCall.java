@@ -35,4 +35,7 @@ public class LogCall {
     @Column(name = "desciption")
     private String description;
 
+    @Column(name = "userId")
+    private long userId;
+
 }
