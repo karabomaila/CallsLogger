@@ -25,43 +25,57 @@
             <form class="form" id="signupForm" onsubmit="submitForm()" method="post" th:object="${signup}" th:action="@{/signup}">
 <!--                <input type="text" id="id" th:field="*{id}" hidden="hidden">-->
 
-                <div class="form-group">
-                    <label for="firstName"><strong>First Name</strong></label>
-                    <input type="text" id="firstName" th:field="*{firstName}" placeholder="First Name" required>
+                <div class="row mb-3">
+                    <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="lastName"><strong>Last Name</strong></label>
-                    <input type="text" id="lastName" th:field="*{lastName}" placeholder="Last Name" required>
+                <div class="row mb-3">
+                    <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email"><strong>Email</strong></label>
-                    <input type="email" id="email" th:field="*{email}" placeholder="example@domail.com" required>
+                <div class="row mb-3">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="example@domail.com" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="phoneNumber"><strong>Phone Number</strong></label>
-                    <input type="tel" maxlength="10" minlength="10" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required>
+                <div class="row mb-3">
+                    <label for="phoneNumber" class="col-sm-3 col-form-label">Phone Number</label>
+                    <div class="col-sm-9">
+                        <input type="tel" class="form-control" maxlength="10" minlength="10" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="password"><strong>Password</strong></label>
-                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+                <div class="row mb-3">
+                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Password" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="confirmPassword"><strong>Confirm Password</strong></label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <div class="row mb-3">
+                    <label for="confirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="checkbox"><strong>Show Password</strong></label>
-                    <input type="checkbox" id="checkbox" onclick="showPassword()">
+                <div class="row mb-3">
+                    <label for="checkbox" class="col-sm-3 col-form-label">Show Password</label>
+                    <div class="col-sm-1">
+                        <input type="checkbox" class="form-control" id="checkbox" onclick="showPassword()">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <button type="submit"><span>Submit</span></button>
+                <div class="row mb-3">
+                    <button type="submit" class="btn-submit"><span>Submit</span></button>
                 </div>
             </form>
         </div>
